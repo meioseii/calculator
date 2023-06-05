@@ -16,6 +16,15 @@ buttons.forEach(button => {
             }
         }
 
+        if (button.classList.contains('delete')) {
+            if (display.textContent.length === 1) {
+                display.textContent = 0;
+                decimalCount = 0;
+            } else {
+                display.textContent = display.textContent.slice(0,-1);
+            }
+        }
+
 
     })
 })
