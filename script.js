@@ -9,15 +9,15 @@ let resetDisplay = false;
 
 function evaluate() {
     if (currentOperation === '%') {
-        display.textContent = (firstOperand / secondOperand) * 100;
+        return (firstOperand / 100) * secondOperand;
     } else if (currentOperation === '/') {
-        display.textContent = firstOperand / secondOperand;
+        return firstOperand / secondOperand;
     } else if (currentOperation === 'x') {
-        display.textContent = firstOperand * secondOperand;
+        return firstOperand * secondOperand;
     } else if (currentOperation === '-') {
-        display.textContent = firstOperand - secondOperand;
+        return firstOperand - secondOperand;
     } else if (currentOperation === '+') {
-        display.textContent = firstOperand + secondOperand;
+        return firstOperand + secondOperand;
     }
 }
 
@@ -73,8 +73,9 @@ buttons.forEach(button => {
             decimalCount = 0;
             resetDisplay = true;
             let result = evaluate();
-            result = secondOperand;
+            display.textContent = result;
             firstOperand = result;
+
             if (secondOperand === 0 && currentOperation === '/') {
                 alert("You cannot divide by 0!");
                 display.textContent = '0';
