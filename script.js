@@ -75,7 +75,15 @@ buttons.forEach(button => {
             let result = evaluate();
             result = secondOperand;
             firstOperand = result;
-
+            if (secondOperand === 0 && currentOperation === '/') {
+                alert("You cannot divide by 0!");
+                display.textContent = '0';
+                firstOperand = 0;
+                secondOperand = 0;
+                decimalCount = 0;
+                currentOperation = null;
+                resetDisplay = false;
+            }
         }
 
         
