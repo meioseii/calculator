@@ -8,6 +8,7 @@
 body {
     background: linear-gradient(to bottom right, rgb(245, 232, 232), lightblue);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -22,6 +23,7 @@ body {
     background: #3a4452;
     border-radius: 10px;
     padding: 20px;
+    margin-top: auto;
 }
 
 .calculator .display {
@@ -72,4 +74,13 @@ body {
 .row .button.all-clear, 
 .row .button.delete {
     color: aqua;
+}
+
+footer {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 12px;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
 }
