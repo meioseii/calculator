@@ -25,6 +25,11 @@ buttons.forEach(button => {
             }
         }
 
+        if (button.classList.contains('all-clear')) {
+            display.textContent = 0;
+            decimalCount = 0;
+        }
+
 
     })
 })
