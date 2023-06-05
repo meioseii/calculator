@@ -67,9 +67,9 @@ body {
     color: #3a4452;
 }
 
-.row .button-operator, 
-.row .button-equal, 
-.row .button-all-clear, 
-.row .button-delete {
+.row .button.operator, 
+.row .button.equal, 
+.row .button.all-clear, 
+.row .button.delete {
     color: aqua;
 }
