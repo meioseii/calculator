@@ -2,8 +2,24 @@ const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('.button');
 
 let decimalCount = 0;
+let firstOperand = 0;
+let secondOperand = 0;
+let currentOperation = null;
+let resetDisplay = false;
 
-
+function evaluate() {
+    if (currentOperation === '%') {
+        display.textContent = (firstOperand / secondOperand) * 100;
+    } else if (currentOperation === '/') {
+        display.textContent = firstOperand / secondOperand;
+    } else if (currentOperation === 'x') {
+        display.textContent = firstOperand * secondOperand;
+    } else if (currentOperation === '-') {
+        display.textContent = firstOperand - secondOperand;
+    } else if (currentOperation === '+') {
+        display.textContent = firstOperand + secondOperand;
+    }
+}
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
@@ -17,7 +33,7 @@ buttons.forEach(button => {
         }
 
         if (button.classList.contains('delete')) {
-            if (display.textContent.length === 1) {
+            if (display.textContent.length === 1 || resetDisplay) {
                 display.textContent = 0;
                 decimalCount = 0;
             } else {
@@ -36,7 +52,14 @@ buttons.forEach(button => {
                 decimalCount++
             }
         }
+
+        if (button.classList.contains('operator')) {
+            firstOperand = parseFloat(display.textContent);
+            decimalCount = 0;
+            currentOperation = button.textContent;
+        }
+
+        console.log(currentOperation);
     })
 })
 
-console.log(display.textContent.length)
