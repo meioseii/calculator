@@ -30,7 +30,12 @@ buttons.forEach(button => {
             decimalCount = 0;
         }
 
-
+        if (button.classList.contains('decimal')) {
+            if (decimalCount === 0) {
+                display.textContent += '.';
+                decimalCount++
+            }
+        }
     })
 })
 
