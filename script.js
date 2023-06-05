@@ -24,17 +24,19 @@ function evaluate() {
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         if (button.classList.contains('number')) {
-            if (display.textContent === '0') {
+            if (display.textContent === '0' || resetDisplay) {
                 display.textContent = '';
-                display.textContent += button.textContent
+                display.textContent += button.textContent;
+                resetDisplay = false;
             } else {
                 display.textContent += button.textContent;
             }
+
         }
 
         if (button.classList.contains('delete')) {
             if (display.textContent.length === 1 || resetDisplay) {
-                display.textContent = 0;
+                display.textContent = '0';
                 decimalCount = 0;
             } else {
                 display.textContent = display.textContent.slice(0,-1);
@@ -44,9 +46,15 @@ buttons.forEach(button => {
         if (button.classList.contains('all-clear')) {
             display.textContent = 0;
             decimalCount = 0;
+            firstOperand = 0;
+            secondOperand = 0;
+            currentOperation = null;
         }
 
         if (button.classList.contains('decimal')) {
+            if (display.textContent.includes('.')) {
+                decimalCount = 1;
+            }
             if (decimalCount === 0) {
                 display.textContent += '.';
                 decimalCount++
@@ -57,9 +65,20 @@ buttons.forEach(button => {
             firstOperand = parseFloat(display.textContent);
             decimalCount = 0;
             currentOperation = button.textContent;
+            resetDisplay = true;
         }
 
-        console.log(currentOperation);
+        if (button.classList.contains('equal')) {
+            secondOperand = parseFloat(display.textContent);
+            decimalCount = 0;
+            resetDisplay = true;
+            let result = evaluate();
+            result = secondOperand;
+            firstOperand = result;
+
+        }
+
+        
     })
 })
 
