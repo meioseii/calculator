@@ -96,6 +96,10 @@ buttons.forEach(button => {
                 currentOperation = null;
                 resetDisplay = false;
             }
+
+            if (display.textContent.length > 11) {
+                display.textContent = 'Infinity';
+            }
         }
 
         
