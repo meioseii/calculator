@@ -62,10 +62,21 @@ buttons.forEach(button => {
         }
 
         if (button.classList.contains('operator')) {
-            firstOperand = parseFloat(display.textContent);
-            decimalCount = 0;
-            currentOperation = button.textContent;
-            resetDisplay = true;
+            if (firstOperand === 0) {
+                firstOperand = parseFloat(display.textContent);
+                decimalCount = 0;
+                currentOperation = button.textContent;
+                resetDisplay = true;
+            } else {
+                secondOperand = parseFloat(display.textContent);
+                decimalCount = 0;
+                resetDisplay = true;
+                let result = evaluate();
+                display.textContent = result;
+                firstOperand = result;
+                currentOperation = button.textContent;
+            }
+            
         }
 
         if (button.classList.contains('equal')) {

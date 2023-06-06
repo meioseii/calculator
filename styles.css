@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, rgb(245, 232, 232), lightblue);
+    background: linear-gradient(to bottom right, rgb(255, 221, 221), rgb(162, 211, 228));
     display: flex;
     flex-direction: column;
     justify-content: center;
